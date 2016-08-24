@@ -50,10 +50,21 @@
         switch (ul_reason_for_call)
         {
         case DLL_PROCESS_ATTACH:
+            // Disables the DLL_THREAD_ATTACH and DLL_THREAD_DETACH notifications for the specified dynamic-link library (DLL).
+            // This can reduce the size of the working set for some applications.
+            DisableThreadLibraryCalls((HINSTANCE)hModule);
         case DLL_THREAD_ATTACH:
         case DLL_THREAD_DETACH:
         case DLL_PROCESS_DETACH:
             break;
         }
         return TRUE;
+    }
+
+    // EasyHook will be looking for this export to support DLL injection. If not found then 
+    // DLL injection will fail.
+    extern "C" __declspec(dllexport) void __stdcall NativeInjectionEntryPoint(REMOTE_ENTRY_INFO* InRemoteInfo)
+    {
+        std::cout << "Injected by process Id: " << InRemoteInfo->HostPID << "\n";
+        std::cout << "Passed in data size: " << InRemoteInfo->UserDataSize << "\n";
     }
