@@ -27,7 +27,11 @@
         #endif
     #endif
 
-# DllMain
+# Modify DllMain
+
+    Change DllMain to EasyHookDllMain
+
+# Use static lib
 
     #include "../include/easyhook/easyhook.h"
 
