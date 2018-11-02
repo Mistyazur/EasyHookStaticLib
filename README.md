@@ -16,7 +16,7 @@
                 DWORD  ul_reason_for_call,
                 LPVOID lpReserved
             );
-            #else
+        #else
             #ifndef DRIVER
                 #define EASYHOOK_API					__declspec(dllimport) __stdcall
                 #define DRIVER_SHARED_API(type, decl)	EXTERN_C type EASYHOOK_API decl
