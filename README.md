@@ -13,11 +13,20 @@
         #ifdef EASYHOOK_LIB
             #define EASYHOOK_API                        __stdcall
             #define DRIVER_SHARED_API(type, decl)       typedef type EASYHOOK_API PROC_##decl; EXTERN_C type EASYHOOK_API decl
-            
-            EXTERN_C BOOL APIENTRY EasyHookDllMain(HMODULE hModule,
+
+            EXTERN_C BOOL APIENTRY EasyHookDllMain(
+                HMODULE hModule,
                 DWORD  ul_reason_for_call,
                 LPVOID lpReserved
-            );
+                );
+
+
+            #if defined(_MSC_VER) && (_MSC_VER >= 1800)
+                extern "C" FILE * __cdecl __iob_func(void) {
+                    static FILE _iob[] = { *stdin, *stdout, *stderr };
+                    return _iob; 
+                }
+            #endif
         #else
             #ifndef DRIVER
                 #define EASYHOOK_API                    __declspec(dllimport) __stdcall
