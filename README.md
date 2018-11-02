@@ -20,7 +20,6 @@
                 LPVOID lpReserved
                 );
 
-
             #if defined(_MSC_VER) && (_MSC_VER >= 1800)
                 extern "C" FILE * __cdecl __iob_func(void) {
                     static FILE _iob[] = { *stdin, *stdout, *stderr };
