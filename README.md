@@ -2,6 +2,7 @@
 
     Change "dll" to "lib" in property configuration type.
     Change "EASYHOOK_EXPORTS" to "EASYHOOK_LIB" in property preprocessor.
+    "Configuration Properties->C/C++->Optimization->Whole Program Optimization" to "No".
 
 # Modify begining of easyhook.h
 
