@@ -6,8 +6,8 @@
 # Modify begining of easyhook.h
 
     #ifdef EASYHOOK_EXPORTS
-        #define EASYHOOK_API						__declspec(dllexport) __stdcall
-        #define DRIVER_SHARED_API(type, decl)		EXTERN_C type EASYHOOK_API decl
+        #define EASYHOOK_API                        __declspec(dllexport) __stdcall
+        #define DRIVER_SHARED_API(type, decl)       EXTERN_C type EASYHOOK_API decl
     #else
         #ifdef EASYHOOK_LIB
             #define EASYHOOK_API                    __stdcall
